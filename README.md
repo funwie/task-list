@@ -13,7 +13,7 @@
 - Imparta.Domain: This has domain models and logic
 
 ### Technologies and Tools
-- Asp.net Core 3.1 for Imparta.UI.Web and .Net Standard 2.1 for Imparta.DataAccess and Imparta.Application
+- Asp.net Core 3.1 for Imparta.UI.Web and .Net Standard 2.1 for Imparta.DataAccess, Imparta.Application, and Imparta.Domain
 - Angular 8.2
 - Entity Framework Core 3.1
 - Bootstrap 4
