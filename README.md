@@ -14,7 +14,7 @@
 
 ### Technologies and Tools
 - Asp.net Core 3.1 for Imparta.UI.Web and .Net Standard 2.1 for Imparta.DataAccess, Imparta.Application, and Imparta.Domain
-- Angular 8.2
+- Angular 8.2: Install Node and Angular CLI
 - Entity Framework Core 3.1
 - Bootstrap 4
 - SQL Server Express LocalDB
@@ -38,5 +38,8 @@
 - Add Validation to the models in Imparta.Domain
 - Write tests to conver all testable units
 - XML documentation. API spec and documentation using OpenAPI (Swagger)
+- Add Search, Filtering, and Sorting
+- Add Logging
+- Resolve issues. Editing allows only description, not start and end dates. List bage count does not update when task is added/removed unless page is reloaded.
 
 
