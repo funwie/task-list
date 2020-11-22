@@ -6,8 +6,8 @@
 - User registration and login. This was provided by the Angular template in Visual Studio and only minor changes were made to accommodate the requirements
 
 ### Design and Architecture
-
-- Imparta.UI.Web: The backend API and the frontend Angular App. The initial plan was to have separate projects for the Task API backend and Task Web UI frontend but both have been combined in the Imparta.UI.Web project for simplicity. Consumes Imparta.Application and Imparta.Domain.
+- The frontend is in Angular and it consumes Task API backend written in ASP.Net Core with C#
+- Imparta.UI.Web: The backend API and the frontend Angular App. The initial plan was to have separate projects, but both have been combined in the Imparta.UI.Web project for simplicity. Imparta.UI.Web consumes Imparta.Application and Imparta.Domain.
 - Imparta.Application: The core application. This can be consumed by other frontends / services. Consumes Imparta.Domain and Imparta.DataAccess.
 - Imparta.DataAccess: The is the SQL data access using Entity Framework Core ORM. Consumes Imparta.Domain
 - Imparta.Domain: This has domain models and logic
