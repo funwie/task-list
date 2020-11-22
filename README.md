@@ -39,7 +39,7 @@
 - Write tests to conver all testable units
 - XML documentation. API spec and documentation using OpenAPI (Swagger)
 - Add Search, Filtering, and Sorting
-- Add Logging
+- Add Logging and Exceptions handling
 - Resolve issues. Editing allows only description, not start and end dates. List bage count does not update when task is added/removed unless page is reloaded.
 
 
