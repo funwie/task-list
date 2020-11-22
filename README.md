@@ -36,5 +36,7 @@
 - Improve the design on mobile. 
 - Refine the Angular frontend as I learn more about the framework.
 - Add Validation to the models in Imparta.Domain
+- Write tests to conver all testable units
+- XML documentation. API spec and documentation using OpenAPI (Swagger)
 
 
