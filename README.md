@@ -1,9 +1,9 @@
-## Solution to the Task List App
+## Task List App
 
 ### Features
-- List Creation.  Each has can have multiple lists. Each list with multiple tasks
+- List Creation.  Each User can have multiple lists. Each list can have multiple tasks
 - Task creation, editing, completion, open, remove. Each task belongs in a list
-- User registration and login. This was provider by the Angular template in Visual Studio and only minor changes were added to accommedate the requirements
+- User registration and login. This was provider by the Angular template in Visual Studio and only minor changes were made to accommodate the requirements
 
 ### Design and Architecture
 
@@ -17,16 +17,16 @@
 - SQL Server Express LocalDB
 
 ### Running the solution
-- Clone the project and open the solution in Visual Studio or prefered editor
+- Clone the project and open the solution in Visual Studio
 - In the Package Manager Console, Run:
-- ``` Update-Database -Project 'Imparta.UI.Web' -Context IdentityDbContext
-Update-Database -Project 'Imparta.DataAccess' -Context TaskDbContext ```
+- ``` Update-Database -Project 'Imparta.UI.Web' -Context IdentityDbContext ```
+- ``` Update-Database -Project 'Imparta.DataAccess' -Context TaskDbContext ```
 - Build and Run the Project
 - Tests are also available to run
 
 ### Remarks
-- The project took a little bit longer because i wanted to also pick up Angular skills. My frontend end experience is in React but we discussed that you use Angular at Imparta and i wanted to start learning Angualar with this project.
-- Testing: This is very limited because of time constraints. I value testing hihgly and it is a critical part of building quality software.
+- This project took a little bit longer because I wanted to also pick up Angular skills. My frontend end experience is in React, but we discussed that Imparta uses Angular. This project was an opportunity to delve into Angular. I have scratched just the basics, but it will be easier for me to quickly pick up the advance parts and best practises.
+- Testing: This is limited because of time constraints. However, I value testing highly and it is a critical part of building quality software.
 - Improvements: Plenty of refactoring to do to clean the code. Improve the design on mobile. Refine the Angular frontend as I learn more about the framework.
 
 
