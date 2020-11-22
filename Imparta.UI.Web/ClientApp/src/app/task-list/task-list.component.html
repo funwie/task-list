@@ -1,0 +1,65 @@
+<h4>Tasks</h4>
+<form (submit)="onNewTask()" #newTaskForm="ngForm" novalidate>
+  <div *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+  <div class="row">
+    <div class="col-6">
+      <label for="start">Start</label>
+      <input type="datetime-local" name="start" [(ngModel)]="createTask.start" #start="ngModel" class="form-control mb-2" id="start">
+      <small *ngIf="start.invalid && (start.dirty || start.touched)" class="form-text text-danger">Invalid start date</small>
+    </div>
+    <div class="col-6">
+      <label for="end">End</label>
+      <input type="datetime-local" name="end" [(ngModel)]="createTask.end" #end="ngModel" class="form-control mb-2" id="end">
+      <small *ngIf="end.invalid && (end.dirty || end.touched)" class="form-text text-danger">Invalid end date</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 col-md-12 col-sm-12">
+      <label class="sr-only" for="description">Description</label>
+      <input type="text" class="form-control mb-2" name="description" [(ngModel)]="createTask.description" #description="ngModel" id="description" required minlength="2" maxlength="1000" placeholder="Description">
+      <small *ngIf="description.invalid && (description.dirty || description.touched)" class="form-text text-danger">Description is required. At least 2 characters</small>
+    </div>
+    <div class="col-lg-2 col-md-12 col-sm-12">
+      <button type="submit" class="btn btn-primary mb-2" [disabled]="newTaskForm.invalid">Add Task</button>
+    </div>
+  </div>
+</form>
+
+<p *ngIf="!tasks"><em>Loading...</em></p>
+
+<ul class="list-group list-group-flush" *ngFor="let task of tasks">
+  <li class="list-group-item border-bottom-0 pr-0 pl-0" id="{{ task.id }}" attr.data-list-id="{{ task.taskListId }}">
+
+    <div class="card ml-0, mr-0">
+      <div class="card-body">
+        <p class="card-text">{{ task.description }}</p>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12 justify-content-start">
+            <div class="row">
+              <div class="col-lg-4">
+                <small>{{ task.statusName }}</small>
+              </div>
+              <div class="col-lg-8">
+                <small>Start: {{ task.start | date:'dd/MM/yyyy @ h:mma' }} </small><br />
+                <small>End: {{ task.end | date:'dd/MM/yyyy @ h:mma' }}</small>
+              </div>
+            </div>
+            
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 justify-content-end">
+            <button *ngIf="task.open" class="btn btn-link" (click)="startTask($event, task)">Start</button>
+            <button *ngIf="!task.completed" class="btn btn-link" (click)="completeTask($event, task)">Complete</button>
+            <button *ngIf="task.inProgress" class="btn btn-link" (click)="openTask($event, task)">Open</button>
+            <button *ngIf="!task.completed" class="btn btn-link">Edit</button>
+            <button class="btn btn-link" (click)="removeTask($event, task)">Remove</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </li>
+</ul>
+
+<p *ngIf="tasks && tasks.length === 0">No tasks</p>

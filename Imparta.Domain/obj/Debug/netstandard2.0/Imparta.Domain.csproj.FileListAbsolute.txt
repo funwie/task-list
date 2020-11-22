@@ -1,0 +1,9 @@
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\bin\Debug\netstandard2.0\Imparta.Domain.deps.json
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\bin\Debug\netstandard2.0\Imparta.Domain.dll
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\bin\Debug\netstandard2.0\Imparta.Domain.pdb
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\obj\Debug\netstandard2.0\Imparta.Domain.csprojAssemblyReference.cache
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\obj\Debug\netstandard2.0\Imparta.Domain.AssemblyInfoInputs.cache
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\obj\Debug\netstandard2.0\Imparta.Domain.AssemblyInfo.cs
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\obj\Debug\netstandard2.0\Imparta.Domain.csproj.CoreCompileInputs.cache
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\obj\Debug\netstandard2.0\Imparta.Domain.dll
+C:\Users\work\source\repos\Imparta.Task\Imparta.Domain\obj\Debug\netstandard2.0\Imparta.Domain.pdb

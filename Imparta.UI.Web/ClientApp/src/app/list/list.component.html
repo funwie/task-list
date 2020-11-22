@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-lg-4 col-md-12 col-sm-12">
+    <h2>Lists</h2>
+    <form (submit)="onNewList()" #newListForm="ngForm" novalidate class="form-inline mb-5">
+      <div *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+      <div class="row">
+        <div class="col-8">
+          <label class="sr-only" for="listTitle">Title</label>
+          <input type="text" name="title" [(ngModel)]="createList.title" #title="ngModel" class="form-control mb-2 mr-sm-2" id="title" required minlength="2" maxlength="255" placeholder="Enter list title">
+          <small *ngIf="title.invalid && (title.dirty || title.touched)" class="form-text text-danger">Valid title is required</small>
+        </div>
+        <div class="col-4">
+          <button type="submit" class="btn btn-primary mb-2" [disabled]="newListForm.invalid">Add List</button>
+        </div>
+      </div>
+    </form>
+
+    <p *ngIf="!taskLists"><em>Loading...</em></p>
+    <ul class="list-group list-group-flush" *ngFor="let taskList of taskLists">
+      <li class="list-group-item d-flex justify-content-between align-items-center" id="{{ taskList.id }}"
+          attr.data-owner-id="{{ taskList.ownerId }}"
+          (click)="loadTasks($event, taskList)"
+          style="cursor: pointer">
+        {{ taskList.title }}
+        <span class="badge badge-primary badge-pill">{{ taskList.tasksCount }}</span>
+      </li>
+    </ul>
+
+    <p *ngIf="taskLists && taskLists.length === 0">No List</p>
+  </div>
+
+  <div class="col-lg-8 col-md-12 col-sm-12">
+    <app-task-list [tasks]="tasks" [taskListId]="activeListId"></app-task-list>
+  </div>
+</div>
+
+

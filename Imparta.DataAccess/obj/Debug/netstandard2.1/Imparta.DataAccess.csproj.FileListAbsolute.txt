@@ -1,0 +1,12 @@
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\bin\Debug\netstandard2.1\Imparta.DataAccess.deps.json
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\bin\Debug\netstandard2.1\Imparta.DataAccess.dll
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\bin\Debug\netstandard2.1\Imparta.DataAccess.pdb
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\bin\Debug\netstandard2.1\Imparta.Domain.dll
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\bin\Debug\netstandard2.1\Imparta.Domain.pdb
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\obj\Debug\netstandard2.1\Imparta.DataAccess.csprojAssemblyReference.cache
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\obj\Debug\netstandard2.1\Imparta.DataAccess.AssemblyInfoInputs.cache
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\obj\Debug\netstandard2.1\Imparta.DataAccess.AssemblyInfo.cs
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\obj\Debug\netstandard2.1\Imparta.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\obj\Debug\netstandard2.1\Imparta.DataAccess.csproj.CopyComplete
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\obj\Debug\netstandard2.1\Imparta.DataAccess.dll
+C:\Users\work\source\repos\Imparta.Task\Imparta.DataAccess\obj\Debug\netstandard2.1\Imparta.DataAccess.pdb
