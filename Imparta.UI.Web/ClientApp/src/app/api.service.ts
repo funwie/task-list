@@ -63,7 +63,7 @@ export class ApiService {
       }));
   }
 
-  updateTask(task: { id: string, description: string; start: string; end: string; }): Observable<boolean> {
+  updateTask(task: { id: string, description: string; }): Observable<boolean> {
     const requestUrl = `${this.baseUrl}api/tasks/${task.id}`;
     const headers = new HttpHeaders().set("Content-Type", "application/json").set('Authorization', `Bearer ${this.authToken}`);
 

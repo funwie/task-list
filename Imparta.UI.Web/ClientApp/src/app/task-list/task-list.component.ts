@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Task } from './../types';
+import { Task, TaskList } from './../types';
 import { ApiService } from './../api.service';
 
 @Component({
@@ -9,18 +9,12 @@ import { ApiService } from './../api.service';
 
 export class TaskListComponent {
   @Input() tasks: Task[];
-  @Input() taskListId: string;
+  @Input() activeTaskList: TaskList;
 
   private task: Task;
 
-  public createTask = {
-    description: '',
-    start: new Date(),
-    end: new Date(),
-    taskListId: ''
-  }
-
   errorMessage: string = '';
+  isEditing: boolean = false;
 
   constructor(private apiService: ApiService) {
   }
@@ -39,8 +33,27 @@ export class TaskListComponent {
       }, err => this.errorMessage = 'Failed to add task');
   }
 
-  public updateTask(event, task: Task) {
+  public onEditTask() {
+    this.errorMessage = '';
 
+    this.apiService.updateTask(this.editTask)
+      .subscribe(success => {
+        if (success) {
+          this.task = this.apiService.task;
+          this.updateTaskInView();
+          this.cancelEditTask();
+        }
+      }, err => this.errorMessage = 'Failed to update task');
+  }
+
+  public displayEditTask(event, task: Task) {
+    this.editTask = {
+      id: task.id,
+      description: task.description,
+      taskListId: task.taskListId
+    };
+
+    this.isEditing = true;
   }
 
   public startTask(event, task: Task) {
@@ -70,6 +83,15 @@ export class TaskListComponent {
     }, error => this.errorMessage = 'Failed to remove task');
   }
 
+  public cancelEditTask() {
+    this.editTask = {
+      id: '',
+      description: '',
+      taskListId: ''
+    };
+    this.isEditing = false;
+  }
+
   private addTasktoTasks() {
     this.tasks.unshift(this.task);
   }
@@ -85,15 +107,28 @@ export class TaskListComponent {
   }
 
   private setActiveListId() {
-    this.createTask.taskListId = this.taskListId;
+    this.createTask.taskListId = this.activeTaskList.id;
   }
 
   private resetFormFields() {
     this.createTask = {
-      description: '',
+      description: null,
       start: new Date(),
       end: new Date(),
       taskListId: ''
     };
   }
+
+  public createTask = {
+    description: '',
+    start: new Date(),
+    end: new Date(),
+    taskListId: ''
+  };
+
+  public editTask = {
+    id: '',
+    description: '',
+    taskListId: ''
+  };
 }

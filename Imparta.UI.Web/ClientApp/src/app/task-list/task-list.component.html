@@ -1,5 +1,7 @@
-<h4>Tasks</h4>
-<form (submit)="onNewTask()" #newTaskForm="ngForm" novalidate>
+<h4>{{ activeTaskList.title }} Tasks</h4>
+
+<!--Create Task-->
+<form *ngIf="!isEditing" (submit)="onNewTask()" #newTaskForm="ngForm" novalidate>
   <div *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
   <div class="row">
     <div class="col-6">
@@ -25,8 +27,31 @@
   </div>
 </form>
 
-<p *ngIf="!tasks"><em>Loading...</em></p>
+<!--Edit Task-->
+<form *ngIf="isEditing" (submit)="onEditTask()" #editTaskForm="ngForm" novalidate>
+  <div *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
 
+  <!-- TODO: Not enough time to resolve issue with datetime-local binding. Fix in improvements-->
+  <div class="row">
+    <div class="col-12">
+      <label class="sr-only" for="editDescription">Description</label>
+      <input type="text" class="form-control mb-2" name="editDescription" [(ngModel)]="editTask.description" #editDescription="ngModel" id="editDescription" required minlength="2" maxlength="1000" placeholder="Description">
+      <small *ngIf="editDescription.invalid && (editDescription.dirty || editDescription.touched)" class="form-text text-danger">Description is required. At least 2 characters</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
+      <button class="btn btn-primary mb-2" (click)="cancelEditTask()">Cancel</button>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-left align-items-center">
+      <button type="submit" class="btn btn-primary mb-2" [disabled]="editTaskForm.invalid">Save</button>
+    </div>
+  </div>
+</form>
+
+
+<!--Task List-->
+<p *ngIf="!tasks"><em>Loading...</em></p>
 <ul class="list-group list-group-flush" *ngFor="let task of tasks">
   <li class="list-group-item border-bottom-0 pr-0 pl-0" id="{{ task.id }}" attr.data-list-id="{{ task.taskListId }}">
 
@@ -46,13 +71,13 @@
                 <small>End: {{ task.end | date:'dd/MM/yyyy @ h:mma' }}</small>
               </div>
             </div>
-            
+
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 justify-content-end">
             <button *ngIf="task.open" class="btn btn-link" (click)="startTask($event, task)">Start</button>
             <button *ngIf="!task.completed" class="btn btn-link" (click)="completeTask($event, task)">Complete</button>
-            <button *ngIf="task.inProgress" class="btn btn-link" (click)="openTask($event, task)">Open</button>
-            <button *ngIf="!task.completed" class="btn btn-link">Edit</button>
+            <button *ngIf="!task.open"class="btn btn-link" (click)="openTask($event, task)">Open</button>
+            <button class="btn btn-link" (click)="displayEditTask($event, task)">Edit</button>
             <button class="btn btn-link" (click)="removeTask($event, task)">Remove</button>
           </div>
         </div>
@@ -62,4 +87,4 @@
   </li>
 </ul>
 
-<p *ngIf="tasks && tasks.length === 0">No tasks</p>
+<p *ngIf="tasks && tasks.length === 0">No tasks in {{ activeTaskList.title }}</p>

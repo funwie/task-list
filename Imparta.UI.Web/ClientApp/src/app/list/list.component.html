@@ -29,8 +29,8 @@
     <p *ngIf="taskLists && taskLists.length === 0">No List</p>
   </div>
 
-  <div class="col-lg-8 col-md-12 col-sm-12">
-    <app-task-list [tasks]="tasks" [taskListId]="activeListId"></app-task-list>
+  <div *ngIf="activeTaskList" class="col-lg-8 col-md-12 col-sm-12">
+    <app-task-list [tasks]="tasks" [activeTaskList]="activeTaskList"></app-task-list>
   </div>
 </div>
 

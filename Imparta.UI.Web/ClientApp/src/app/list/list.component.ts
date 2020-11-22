@@ -12,7 +12,7 @@ export class ListComponent implements OnInit {
   public taskLists: TaskList[];
   public tasks: Task[];
 
-  public taskList: TaskList;
+  public activeTaskList: TaskList;
   public task: Task;
 
   public createList = {
@@ -20,7 +20,6 @@ export class ListComponent implements OnInit {
   };
 
   errorMessage: string = '';
-  activeListId: string = '';
 
   constructor(private apiService: ApiService) {
     this.taskLists = this.apiService.taskLists;
@@ -36,7 +35,7 @@ export class ListComponent implements OnInit {
     this.apiService.loadTaskForList(taskList.id).subscribe(success => {
       if (success) {
         this.tasks = this.apiService.tasks;
-        this.activeListId = taskList.id;
+        this.activeTaskList = taskList;
       }
     }, error => this.errorMessage = 'Failed to load tasks');
   }
@@ -46,8 +45,10 @@ export class ListComponent implements OnInit {
     this.apiService.createList(this.createList)
       .subscribe(success => {
         if (success) {
-          this.taskList = this.apiService.taskList;
+          this.activeTaskList = this.apiService.taskList;
+          this.activeTaskList.tasksCount = 0;
           this.addListToView();
+          this.resetListForm();
         }
       }, error => this.errorMessage = 'Failed create list');
   }
@@ -64,9 +65,14 @@ export class ListComponent implements OnInit {
   }
 
   private addListToView() {
-    this.taskLists.unshift(this.taskList);
-    this.activeListId = this.taskList.id;
+    this.taskLists.unshift(this.activeTaskList);
     this.tasks = [];
+  }
+
+  private resetListForm() {
+    this.createList = {
+      title: ''
+    };
   }
 
 }
