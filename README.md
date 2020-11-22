@@ -41,5 +41,3 @@
 - Add Search, Filtering, and Sorting
 - Add Logging and Exceptions handling
 - Resolve issues. Editing allows only description, not start and end dates. List bage count does not update when task is added/removed unless page is reloaded.
-
-
